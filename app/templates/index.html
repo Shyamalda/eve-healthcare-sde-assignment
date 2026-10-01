@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d7c72" />
+  <meta name="description" content="EVE Healthcare — diagnostic centre discovery, test booking and simulated payment demo." />
+  <title>EVE Healthcare | Diagnostic Booking</title>
+  <link rel="icon" href="/static/eve-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="EVE Healthcare home">
+        <span class="brand-mark"><img src="/static/eve-mark.svg" alt="" /></span>
+        <span class="brand-copy">
+          <strong>EVE <em>Healthcare</em></strong>
+          <small>Diagnostic Care Platform</small>
+        </span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <button class="nav-link active" data-view="home">Home</button>
+        <button class="nav-link" data-view="discover">Find a Test</button>
+        <button class="nav-link" data-view="bookings">My Bookings</button>
+        <button class="nav-link admin-only hidden" data-view="admin">Admin</button>
+      </nav>
+      <div class="header-actions">
+        <span class="health-pill" id="health-pill"><i></i><span>Checking</span></span>
+        <button class="link-btn" id="docs-link" type="button">API Docs</button>
+        <button class="outline-btn" id="auth-btn" type="button">Sign in</button>
+      </div>
+      <button class="mobile-menu" id="mobile-menu" aria-label="Open navigation">☰</button>
+    </div>
+    <div class="mobile-nav hidden" id="mobile-nav">
+      <button data-view="home">Home</button>
+      <button data-view="discover">Find a Test</button>
+      <button data-view="bookings">My Bookings</button>
+      <button class="admin-only hidden" data-view="admin">Admin Console</button>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section id="view-home" class="view active-view">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="spark"></span> EVE Healthcare · SDE Assignment Demo</div>
+          <h1>Diagnostic care,<br><span>without the complexity.</span></h1>
+          <p>Discover trusted diagnostic centres, compare test prices, schedule an appointment and complete a simulated payment — all through a responsive healthcare web experience.</p>
+          <div class="hero-actions">
+            <button class="primary-btn large" id="hero-book">Book a diagnostic test <span>→</span></button>
+            <button class="soft-btn large" id="hero-demo">Try demo access</button>
+          </div>
+          <div class="trust-row">
+            <div><span class="trust-icon">✓</span><span>JWT-secured sessions</span></div>
+            <div><span class="trust-icon">✓</span><span>Idempotent payments</span></div>
+            <div><span class="trust-icon">✓</span><span>Validated API contracts</span></div>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="panel-top">
+            <div><span class="mini-label">LIVE SERVICE</span><strong>Care booking flow</strong></div>
+            <span class="live-badge"><i></i> Operational</span>
+          </div>
+          <div class="care-card">
+            <div class="care-card-icon">✚</div>
+            <div><strong>End-to-end diagnostic booking</strong><small>Centre → Test → Appointment → Payment → Confirmation</small></div>
+            <span class="chevron">›</span>
+          </div>
+          <div class="flow-grid">
+            <div class="flow-step active"><span>01</span><strong>Choose</strong><small>Centre & test</small></div>
+            <div class="flow-line"></div>
+            <div class="flow-step"><span>02</span><strong>Book</strong><small>Future slot</small></div>
+            <div class="flow-line"></div>
+            <div class="flow-step"><span>03</span><strong>Pay</strong><small>Mock provider</small></div>
+          </div>
+          <div class="stat-strip">
+            <div><strong id="stat-centres">—</strong><span>active centres</span></div>
+            <div><strong id="stat-tests">—</strong><span>diagnostic tests</span></div>
+            <div><strong id="stat-latency">—</strong><span>health check</span></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section-pad top-border">
+        <div class="section-heading">
+          <div><span class="section-kicker">Designed for clarity</span><h2>Everything an evaluator needs to inspect</h2></div>
+          <p>The interface is not a mockup — these cards and actions are connected to the backend APIs running behind the site.</p>
+        </div>
+        <div class="capability-grid">
+          <article class="feature-card"><div class="feature-no">01</div><div class="feature-icon">◈</div><h3>Authentication</h3><p>Signup, login, JWT bearer auth, protected resources and role checks.</p><span>/auth/*</span></article>
+          <article class="feature-card"><div class="feature-no">02</div><div class="feature-icon">⌖</div><h3>Diagnostics</h3><p>Centres, tests and centre-specific pricing with admin management.</p><span>/centres · /tests</span></article>
+          <article class="feature-card"><div class="feature-no">03</div><div class="feature-icon">▣</div><h3>Bookings</h3><p>Authenticated appointment creation, ownership checks and cancellation.</p><span>/bookings/*</span></article>
+          <article class="feature-card"><div class="feature-no">04</div><div class="feature-icon">₹</div><h3>Simulated payments</h3><p>Success/failure outcomes and safe retries using idempotency keys.</p><span>/payments/*</span></article>
+          <article class="feature-card"><div class="feature-no">05</div><div class="feature-icon">↻</div><h3>Webhook safety</h3><p>Duplicate event protection and monotonic terminal state handling.</p><span>event_id</span></article>
+          <article class="feature-card"><div class="feature-no">06</div><div class="feature-icon">✓</div><h3>Engineering quality</h3><p>PostgreSQL, Docker, OpenAPI, pagination, logging and automated tests.</p><span>CI · Pytest</span></article>
+        </div>
+      </section>
+
+      <section class="section-pad showcase-grid">
+        <div class="showcase-copy">
+          <span class="section-kicker">Healthcare-first UI</span>
+          <h2>Professional enough for a recruiter.<br><span>Simple enough for a patient.</span></h2>
+          <p>Use the live demo to explore the full booking journey. The layout is intentionally calm, readable and responsive — closer to a modern diagnostic service than a developer-only dashboard.</p>
+          <div class="check-list">
+            <div><span>✓</span><strong>Clear status language</strong><small>PENDING, CONFIRMED, FAILED and CANCELLED are visible where they matter.</small></div>
+            <div><span>✓</span><strong>Actionable feedback</strong><small>Validation, authorization and payment errors are surfaced as friendly messages.</small></div>
+            <div><span>✓</span><strong>API visibility</strong><small>Swagger and ReDoc remain one click away for technical review.</small></div>
+          </div>
+        </div>
+        <div class="mini-dashboard">
+          <div class="mini-header"><div><span>Demo booking</span><strong>Diagnostic appointment</strong></div><span class="status confirmed">CONFIRMED</span></div>
+          <div class="mini-detail"><div><span>Test</span><strong>Complete Blood Count</strong></div><div><span>Centre</span><strong>EVE Care Lab</strong></div></div>
+          <div class="mini-detail"><div><span>Date</span><strong>15 Jan · 10:30 AM</strong></div><div><span>Amount</span><strong>₹450.00</strong></div></div>
+          <div class="mini-progress"><span></span><span></span><span></span><span></span></div>
+          <div class="mini-foot"><span>Payment protected with an idempotency key</span><i>✓</i></div>
+        </div>
+      </section>
+    </section>
+
+    <section id="view-discover" class="view">
+      <div class="page-head">
+        <div><span class="section-kicker">Diagnostic catalogue</span><h2>Find the right test</h2><p>Browse available diagnostic tests, compare centres and book a future appointment.</p></div>
+        <div class="page-actions"><button class="soft-btn" id="refresh-catalog">Refresh catalogue</button><button class="primary-btn" id="open-booking-top">Book appointment</button></div>
+      </div>
+      <div class="search-row">
+        <div class="search-box"><span>⌕</span><input id="catalog-search" type="search" placeholder="Search tests, centres or locations…" /></div>
+        <select class="filter-select" id="test-filter"><option value="all">All tests</option></select>
+      </div>
+      <div id="catalog-grid" class="catalog-grid"></div>
+      <div id="catalog-empty" class="empty-state hidden"><div>⌕</div><h3>No matching tests</h3><p>Try another test name, centre or location.</p></div>
+    </section>
+
+    <section id="view-bookings" class="view">
+      <div class="page-head">
+        <div><span class="section-kicker">Patient workspace</span><h2>My bookings</h2><p>Track appointment status and complete a simulated payment when a booking is pending.</p></div>
+        <button class="primary-btn" id="booking-view-action">New appointment</button>
+      </div>
+      <div id="login-required-bookings" class="auth-banner hidden"><div><strong>Sign in to view your bookings.</strong><span>Your appointment history is protected by JWT authentication.</span></div><button class="primary-btn" id="booking-login">Sign in</button></div>
+      <div id="bookings-summary" class="summary-cards hidden">
+        <div><span>All bookings</span><strong id="summary-all">0</strong></div>
+        <div><span>Confirmed</span><strong id="summary-confirmed">0</strong></div>
+        <div><span>Pending</span><strong id="summary-pending">0</strong></div>
+        <div><span>Total booked</span><strong id="summary-total">₹0</strong></div>
+      </div>
+      <div id="booking-list" class="booking-list"></div>
+      <div id="booking-empty" class="empty-state hidden"><div>✓</div><h3>No appointments yet</h3><p>Choose a diagnostic test to start your first booking.</p><button class="primary-btn" id="empty-booking-btn">Find a test</button></div>
+    </section>
+
+    <section id="view-admin" class="view">
+      <div class="page-head">
+        <div><span class="section-kicker">Admin workspace</span><h2>Catalogue management</h2><p>Manage diagnostic centres, tests and centre-specific pricing through the protected API.</p></div>
+        <span class="admin-badge">ADMIN ACCESS</span>
+      </div>
+      <div class="admin-layout">
+        <div class="admin-card">
+          <div class="card-head"><div><strong>Add diagnostic centre</strong><span>Protected POST /centres</span></div><span>⌖</span></div>
+          <form id="centre-form" class="form-stack">
+            <label>Centre name<input id="centre-name" required minlength="2" maxlength="160" placeholder="EVE Prime Diagnostics" /></label>
+            <label>Location<input id="centre-location" required minlength="2" maxlength="255" placeholder="Bistupur, Jamshedpur" /></label>
+            <button class="primary-btn" type="submit">Create centre</button>
+          </form>
+        </div>
+        <div class="admin-card">
+          <div class="card-head"><div><strong>Add diagnostic test</strong><span>Protected POST /tests</span></div><span>◈</span></div>
+          <form id="test-form" class="form-stack">
+            <label>Test name<input id="test-name" required minlength="2" maxlength="160" placeholder="Thyroid Profile" /></label>
+            <label>Description<textarea id="test-description" maxlength="1000" placeholder="What does this test measure?"></textarea></label>
+            <label>Base price<input id="test-price" required type="number" min="0.01" step="0.01" placeholder="799.00" /></label>
+            <button class="primary-btn" type="submit">Create test</button>
+          </form>
+        </div>
+        <div class="admin-card wide">
+          <div class="card-head"><div><strong>Attach test to centre</strong><span>Centre-specific selling price</span></div><span>＋</span></div>
+          <form id="attach-form" class="attach-grid">
+            <label>Centre<select id="attach-centre" required></select></label>
+            <label>Test<select id="attach-test" required></select></label>
+            <label>Price<input id="attach-price" required type="number" min="0.01" step="0.01" placeholder="799.00" /></label>
+            <button class="primary-btn" type="submit">Attach test</button>
+          </form>
+        </div>
+      </div>
+      <div class="advanced-panel">
+        <div><span class="section-kicker">Technical review</span><h3>Payment webhook simulator</h3><p>Send a provider-style event through the authenticated demo helper to demonstrate the same webhook idempotency logic without exposing the deployment secret.</p></div>
+        <form id="webhook-form" class="webhook-grid">
+          <input id="webhook-event" placeholder="event id e.g. evt_demo_01" required />
+          <input id="webhook-payment" type="number" min="1" placeholder="payment id" required />
+          <select id="webhook-status"><option value="SUCCESS">SUCCESS</option><option value="FAILED">FAILED</option></select>
+          <button class="soft-btn" type="submit">Send webhook</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="bottom-cta">
+      <div><span class="section-kicker">Technical access</span><h2>Inspect the implementation behind this demo.</h2><p>Use the OpenAPI specification, health endpoint and repository-ready project structure during technical review.</p></div>
+      <div class="bottom-cta-actions"><button class="outline-btn" id="redoc-link">ReDoc ↗</button><button class="primary-btn" id="swagger-link">Swagger UI ↗</button></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <div><strong>EVE <em>Healthcare</em></strong><span>Diagnostic Booking Platform · SDE Intern Assignment</span></div>
+      <div class="footer-links"><a href="/health">Health</a><a href="/openapi.json">OpenAPI JSON</a><a href="/docs">Swagger</a></div>
+    </div>
+  </footer>
+
+  <!-- Auth modal -->
+  <div class="modal hidden" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="modal-backdrop" data-close-modal="auth-modal"></div>
+    <div class="modal-card auth-modal-card">
+      <button class="modal-close" data-close-modal="auth-modal" aria-label="Close">×</button>
+      <div class="modal-icon">✚</div>
+      <span class="section-kicker">Secure access</span>
+      <h2 id="auth-title">Welcome back</h2>
+      <p class="modal-copy" id="auth-subtitle">Sign in to manage appointments and payments.</p>
+      <div class="auth-tabs"><button class="auth-tab active" data-auth-tab="login">Sign in</button><button class="auth-tab" data-auth-tab="register">Create account</button></div>
+      <form id="login-form" class="form-stack">
+        <label>Email<input id="login-email" type="email" required value="demo@evehealthcare.local" /></label>
+        <label>Password<input id="login-password" type="password" required value="Demo@12345" /></label>
+        <button class="primary-btn" type="submit">Sign in securely</button>
+        <button class="text-action" id="use-admin-demo" type="button">Use admin demo credentials</button>
+      </form>
+      <form id="register-form" class="form-stack hidden">
+        <label>Full name<input id="register-name" required minlength="2" maxlength="120" placeholder="Your name" /></label>
+        <label>Email<input id="register-email" type="email" required placeholder="you@example.com" /></label>
+        <label>Password<input id="register-password" type="password" required minlength="8" maxlength="128" placeholder="At least 8 characters" /></label>
+        <button class="primary-btn" type="submit">Create account</button>
+      </form>
+      <div class="demo-note">Demo patient: <strong>demo@evehealthcare.local</strong> · <strong>Demo@12345</strong></div>
+    </div>
+  </div>
+
+  <!-- Booking modal -->
+  <div class="modal hidden" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+    <div class="modal-backdrop" data-close-modal="booking-modal"></div>
+    <div class="modal-card booking-modal-card">
+      <button class="modal-close" data-close-modal="booking-modal" aria-label="Close">×</button>
+      <span class="section-kicker">Appointment</span>
+      <h2 id="booking-title">Book a diagnostic test</h2>
+      <p class="modal-copy">Select a centre, test and future appointment time. The backend will calculate the centre-specific price.</p>
+      <form id="booking-form" class="form-stack">
+        <label>Diagnostic centre<select id="booking-centre" required></select></label>
+        <label>Diagnostic test<select id="booking-test" required></select></label>
+        <label>Appointment date & time<input id="booking-time" type="datetime-local" required /></label>
+        <div class="booking-summary-box"><span>Estimated amount</span><strong id="booking-amount">Select a centre and test</strong></div>
+        <button class="primary-btn" type="submit">Create booking</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Payment modal -->
+  <div class="modal hidden" id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="payment-title">
+    <div class="modal-backdrop" data-close-modal="payment-modal"></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal="payment-modal" aria-label="Close">×</button>
+      <div class="modal-icon">₹</div>
+      <span class="section-kicker">Simulated payment</span>
+      <h2 id="payment-title">Complete your booking</h2>
+      <p class="modal-copy">No real payment gateway is connected. This simulates the assignment's payment processor.</p>
+      <div class="payment-amount" id="payment-amount">₹0.00</div>
+      <div class="payment-actions"><button class="soft-btn" id="pay-failed">Simulate failure</button><button class="primary-btn" id="pay-success">Simulate success</button></div>
+      <div class="payment-note">An idempotency key will be generated for a safe retry.</div>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: eve-healthcare-demo
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: eve-healthcare-db
+          property: connectionString
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
+      - key: WEBHOOK_SECRET
+        generateValue: true
+      - key: APP_NAME
+        value: EVE Healthcare Diagnostic Booking Platform
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+
+databases:
+  - name: eve-healthcare-db
+    plan: free
+    databaseName: eve_healthcare
+    user: eve

@@ -1,10 +1,21 @@
 # EVE Healthcare - SDE Intern Assignment
 
+> **Developer:** Shyamalda · **© 2026 Shyamalda — All rights reserved**
+>
+> This repository is an original evaluation/demo implementation. See [OWNERSHIP.md](OWNERSHIP.md) and [LICENSE](LICENSE) for reuse restrictions.
+
 A production-minded FastAPI backend with a responsive healthcare web demo at `/`, so the assignment can be published as a single recruiter-accessible website. It is a website demo, not a mobile app.
 
 The backend covers diagnostic test discovery, bookings, simulated payments, and idempotent payment webhooks.
 
 This implementation follows the assignment requirements: JWT authentication, diagnostic centres/tests, authenticated bookings, mock payment processing, idempotent webhook handling, validation/authorization, PostgreSQL support, Docker, OpenAPI docs, pagination, structured logs, and automated tests.
+
+## Live demo
+
+- Website: https://eve-healthcare-sde-assignment-production.up.railway.app/
+- Swagger: https://eve-healthcare-sde-assignment-production.up.railway.app/docs
+- Health: https://eve-healthcare-sde-assignment-production.up.railway.app/health
+
 
 ## Tech stack
 

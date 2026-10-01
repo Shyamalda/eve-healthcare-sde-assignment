@@ -29,8 +29,15 @@ async def lifespan(_: FastAPI):
 
 app = FastAPI(
     title=settings.app_name,
-    description="Backend service for diagnostic centre discovery, test bookings, mock payments, and idempotent payment webhooks.",
-    version="1.0.0",
+    description=(
+        "Backend service for diagnostic centre discovery, test bookings, mock payments, "
+        "and idempotent payment webhooks.\n\n"
+        "Original developer: Shyamalda. This implementation is presented for evaluation "
+        "and demonstration purposes."
+    ),
+    version="1.1.0",
+    contact={"name": "Shyamalda"},
+    license_info={"name": "All rights reserved — Shyamalda"},
     lifespan=lifespan,
     docs_url=None,
     redoc_url=None,

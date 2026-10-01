@@ -1,5 +1,7 @@
 # EVE Healthcare — Website Deployment Guide
 
+> **Developer:** Shyamalda · © 2026 Shyamalda — All rights reserved
+
 The intended submission is a **single public website**. The root URL (`/`) is the recruiter-facing demo; `/docs` is the technical API view.
 
 ## Option A — Render Blueprint (recommended)
@@ -31,6 +33,18 @@ The repository contains `render.yaml`, which defines:
 6. For technical review, sign in using the admin demo and open **Admin**.
 7. Use the webhook simulator with a payment ID. Re-send the same event ID to demonstrate idempotency.
 8. Open `/docs` to inspect the actual `POST /payments/webhook/` provider endpoint.
+
+## Option B — Railway
+
+The current live demo is deployed on Railway as a public FastAPI web service backed by PostgreSQL. The connected GitHub repository is `Shyamalda/eve-healthcare-sde-assignment`.
+
+Current public URLs:
+
+- Website: https://eve-healthcare-sde-assignment-production.up.railway.app/
+- Swagger: https://eve-healthcare-sde-assignment-production.up.railway.app/docs
+- Health: https://eve-healthcare-sde-assignment-production.up.railway.app/health
+
+For future updates, push changes to the `main` branch. The connected Railway service can rebuild and redeploy from the new commit.
 
 ## Demo credentials
 

@@ -121,8 +121,8 @@ For PostgreSQL, set `DATABASE_URL`, `JWT_SECRET_KEY`, and `WEBHOOK_SECRET` in `.
 
 ```json
 {
-  "name": "Mithun",
-  "email": "mithun@example.com",
+  "name": "Shyamalda",
+  "email": "shyamalda@example.com",
   "password": "StrongPass@123"
 }
 ```
@@ -131,7 +131,7 @@ For PostgreSQL, set `DATABASE_URL`, `JWT_SECRET_KEY`, and `WEBHOOK_SECRET` in `.
 
 ```json
 {
-  "email": "mithun@example.com",
+  "email": "shyamalda@example.com",
   "password": "StrongPass@123"
 }
 ```
